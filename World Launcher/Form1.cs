@@ -57,16 +57,18 @@ namespace World_Launcher
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
             DisplayFolder();
+
+            
         }
 
 
-      
+
 
         #region Lv_game
         private void lv_game_SelectedIndexChanged(object sender, EventArgs e)
@@ -83,8 +85,8 @@ namespace World_Launcher
                 MessageBox.Show("Location of the Emulator has not been chosen yet", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else {
-                //TODO: implement this
+            else
+            {
                 ListViewHitTestInfo info = lv_game.HitTest(e.X, e.Y);
                 ListViewItem item = info.Item;
 
@@ -92,7 +94,7 @@ namespace World_Launcher
                 {
                     string prompt;
                     if (FullscreenCheckBox.Checked) prompt = emulatorPath + " -fullscreen" + @" """ + patchedRomsFolder + "\\" + item.Text + @"""";
-                    else prompt = emulatorPath + @" """ + patchedRomsFolder + "\\" + item.Text + @"""" ;
+                    else prompt = emulatorPath + @" """ + patchedRomsFolder + "\\" + item.Text + @"""";
                     Process cmd = new Process();
                     cmd.StartInfo.FileName = "cmd.exe";
                     cmd.StartInfo.RedirectStandardInput = true;
@@ -113,28 +115,22 @@ namespace World_Launcher
                     MessageBox.Show("No Item is selected");
                 }
             }
-            
+
 
         }
 
-      
-    
 
-    public void DisplayFolder()
+
+
+        public void DisplayFolder()
         {
-
-
             string[] files = Directory.GetFiles(patchedRomsFolder);
-
-
-
 
             for (int x = 0; x < files.Length; x++)
             {
 
                 DisplayFile(files[x].Substring(patchedRomsFolder.Length + 1));
             }
-
         }
 
         public void DisplayFile(string fileName)
@@ -153,7 +149,7 @@ namespace World_Launcher
         #region Buttons
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            openFileDialog1.Filter = "smc file | *.smc";
             openFileDialog1.ShowDialog();
             smwRomPath = openFileDialog1.FileName;
             Settings.Default["smwRomPath"] = smwRomPath;
@@ -169,9 +165,10 @@ namespace World_Launcher
             Settings.Default.Save();
         }
 
-        
+
         private void button3_Click(object sender, EventArgs e)
         {
+            openFileDialog2.Filter = "Emulator | *.exe";
             openFileDialog2.ShowDialog();
             emulatorPath = openFileDialog2.FileName;
             Settings.Default["emulatorPath"] = emulatorPath;
@@ -185,11 +182,11 @@ namespace World_Launcher
                 MessageBox.Show("Location of the SMW Rom has not been chosen yet", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if(patchFolderPath == null || patchFolderPath == "")
+            else if (patchFolderPath == null || patchFolderPath == "")
             {
                 MessageBox.Show("Folder containing patches has not been chosen yet", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }    
+            }
             else
             {
                 PatchAll();
@@ -200,27 +197,38 @@ namespace World_Launcher
 
         #region Patching
         private void PatchAll()
-         {
+        {
 
             //TODO: Patch files that are in .zip format
             //Get all files in the right format 
-            string[] allPatches = Directory.GetFiles(@patchFolderPath, "*.bps");
+            List<String> allPatches = Directory.GetFiles(@patchFolderPath, "*.*", SearchOption.AllDirectories)
+      .Where(file => new string[] { ".bps", ".ips"}
+      .Contains(Path.GetExtension(file)))
+      .ToList();
             foreach (string patchPath in allPatches)
-             {
+            {
                 Patch(patchPath);
-                
+
             }
         }
         private void Patch(string patchPath)
         {
             //Get Name of Patch
+            // get index of last \, which comes before the file name 
             int cutOff = patchPath.LastIndexOf(@"\");
-            string name = patchPath.Substring(cutOff).Replace(@".bps", "")+".smc";
+
+            //check if bps or ips file, create substring of patchPath after cutOff, delete the original file ending and add .smc
+            string name;
+            if (patchPath.Contains(".bps")) name = patchPath.Substring(cutOff).Replace(@".bps", "") + ".smc";
+            else name = patchPath.Substring(cutOff).Replace(@".ips", "") + ".smc";
+
+          
+
             //Decide, where it should get saved
             string outputPath = @"""" + patchedRomsFolder + name + @"""";
 
             //compose promopt for CMD
-            string prompt = "flips --apply "+ @"""" + patchPath + @"""" + " " + @"""" + smwRomPath + @"""" + " " + outputPath;
+            string prompt = "flips --apply " + @"""" + patchPath + @"""" + " " + @"""" + smwRomPath + @"""" + " " + outputPath;
 
             //Calls Flips CLI which patches file and saves it in the PatchedRoms Folder
             Process cmd = new Process();
@@ -241,11 +249,11 @@ namespace World_Launcher
             //Delete file if CheckBox1 is checked
             if (checkBox1.Checked)
             {
-               
+
                 // Create a reference to a file.
                 FileInfo fi = new FileInfo(patchPath);
                 //Wait until file is not in use anymore
-                while (IsFileLocked(fi)){}
+                while (IsFileLocked(fi)) { }
                 //Delete file
                 fi.Delete();
             }
@@ -285,18 +293,29 @@ namespace World_Launcher
         {
             Settings.Default["DeletePatchesCheckbox"] = checkBox1.Checked.ToString();
             Settings.Default.Save();
-
         }
 
         private void FullscreenCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             Settings.Default["FullscreenCheckBox"] = FullscreenCheckBox.Checked.ToString();
             Settings.Default.Save();
-
+            
         }
 
         #endregion
 
-
+        //Source: https://docs.microsoft.com/en-us/dotnet/desktop/winforms/advanced/how-to-draw-text-on-a-windows-form?view=netframeworkdesktop-4.8 by Microsoft, modified
+        public void DrawString(string text, float x, float y)
+        {
+            System.Drawing.Graphics formGraphics = this.CreateGraphics();
+            string drawString = text;
+            System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 10);
+            System.Drawing.SolidBrush drawBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            System.Drawing.StringFormat drawFormat = new System.Drawing.StringFormat();
+            formGraphics.DrawString(drawString, drawFont, drawBrush, x, y, drawFormat);
+            drawFont.Dispose();
+            drawBrush.Dispose();
+            formGraphics.Dispose();
+        }
     }
 }
