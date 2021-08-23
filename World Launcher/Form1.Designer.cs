@@ -39,6 +39,7 @@ namespace World_Launcher
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.FullscreenCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lv_game
@@ -47,11 +48,10 @@ namespace World_Launcher
             this.ch_file});
             this.lv_game.Cursor = System.Windows.Forms.Cursors.Default;
             this.lv_game.HideSelection = false;
-            this.lv_game.Location = new System.Drawing.Point(16, 117);
-            this.lv_game.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lv_game.Location = new System.Drawing.Point(12, 95);
             this.lv_game.MultiSelect = false;
             this.lv_game.Name = "lv_game";
-            this.lv_game.Size = new System.Drawing.Size(1012, 435);
+            this.lv_game.Size = new System.Drawing.Size(760, 354);
             this.lv_game.TabIndex = 0;
             this.lv_game.UseCompatibleStateImageBehavior = false;
             this.lv_game.SelectedIndexChanged += new System.EventHandler(this.lv_game_SelectedIndexChanged);
@@ -62,10 +62,9 @@ namespace World_Launcher
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(16, 30);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(12, 24);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 50);
+            this.button1.Size = new System.Drawing.Size(116, 41);
             this.button1.TabIndex = 1;
             this.button1.Text = "Choose SMW Rom Location";
             this.button1.UseVisualStyleBackColor = true;
@@ -73,10 +72,9 @@ namespace World_Launcher
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(179, 30);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(134, 24);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 50);
+            this.button2.Size = new System.Drawing.Size(116, 41);
             this.button2.TabIndex = 2;
             this.button2.Text = "Choose Patch Folder";
             this.button2.UseVisualStyleBackColor = true;
@@ -84,10 +82,9 @@ namespace World_Launcher
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(875, 30);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Location = new System.Drawing.Point(656, 24);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(155, 50);
+            this.button4.Size = new System.Drawing.Size(116, 41);
             this.button4.TabIndex = 4;
             this.button4.Text = "Patch!";
             this.button4.UseVisualStyleBackColor = true;
@@ -95,10 +92,9 @@ namespace World_Launcher
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(341, 30);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Location = new System.Drawing.Point(256, 24);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(155, 50);
+            this.button3.Size = new System.Drawing.Size(116, 41);
             this.button3.TabIndex = 6;
             this.button3.Text = "Choose Emulator";
             this.button3.UseVisualStyleBackColor = true;
@@ -109,29 +105,39 @@ namespace World_Launcher
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(504, 46);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox1.Location = new System.Drawing.Point(378, 24);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(218, 21);
+            this.checkBox1.Size = new System.Drawing.Size(168, 17);
             this.checkBox1.TabIndex = 7;
             this.checkBox1.Text = "Delete Patches after Patching";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // FullscreenCheckBox
+            // 
+            this.FullscreenCheckBox.AutoSize = true;
+            this.FullscreenCheckBox.Location = new System.Drawing.Point(378, 48);
+            this.FullscreenCheckBox.Name = "FullscreenCheckBox";
+            this.FullscreenCheckBox.Size = new System.Drawing.Size(154, 17);
+            this.FullscreenCheckBox.TabIndex = 8;
+            this.FullscreenCheckBox.Text = "Start Emulator in Fullscreen";
+            this.FullscreenCheckBox.UseVisualStyleBackColor = true;
+            this.FullscreenCheckBox.CheckedChanged += new System.EventHandler(this.FullscreenCheckBox_CheckedChanged);
+            // 
             // WorldLauncher
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 558);
+            this.ClientSize = new System.Drawing.Size(784, 460);
+            this.Controls.Add(this.FullscreenCheckBox);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lv_game);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MaximumSize = new System.Drawing.Size(1061, 605);
-            this.MinimumSize = new System.Drawing.Size(1061, 605);
+            this.MaximumSize = new System.Drawing.Size(800, 499);
+            this.MinimumSize = new System.Drawing.Size(800, 499);
             this.Name = "WorldLauncher";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load_1);
@@ -152,6 +158,7 @@ namespace World_Launcher
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox FullscreenCheckBox;
     }
 }
 
