@@ -3,6 +3,7 @@ Launcher for Super Mario World Rom Hacks with included Patcher (Floating IPS by 
 
 ## How to use
 
+1. Download the binary from the latest release (recommended method)
 1. Choose Location of your **legally obtained** American Super Mario World Rom (.smc)
 1. Choose Location of the folder containing the your Patches (.bps or .ips)
    1. Click checkbox, if the Patches should be deleted after being applied
