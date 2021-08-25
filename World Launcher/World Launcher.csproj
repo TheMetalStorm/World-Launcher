@@ -81,6 +81,69 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="COPYING.gpl3" />
+    <None Include="Flips Source Code\Flips-master\.vscode\c_cpp_properties.json" />
+    <None Include="Flips Source Code\Flips-master\.vscode\launch.json" />
+    <None Include="Flips Source Code\Flips-master\.vscode\settings.json" />
+    <None Include="Flips Source Code\Flips-master\.vscode\tasks.json" />
+    <None Include="Flips Source Code\Flips-master\appveyor.yml" />
+    <None Include="Flips Source Code\Flips-master\bps_spec.md" />
+    <None Include="Flips Source Code\Flips-master\configure" />
+    <None Include="Flips Source Code\Flips-master\COPYING" />
+    <None Include="Flips Source Code\Flips-master\COPYING.gpl3" />
+    <None Include="Flips Source Code\Flips-master\data\com.github.Alcaro.Flips.desktop" />
+    <None Include="Flips Source Code\Flips-master\flatpak\com.github.Alcaro.Flips.json" />
+    <None Include="Flips Source Code\Flips-master\flips.Manifest" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\aclocal.m4" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\AUTHORS" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\ChangeLog" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\ChangeLog.old" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\CMakeModules\AppendCompilerFlags.cmake" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\CMakeModules\CheckFunctionKeywords.cmake" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\CMakeModules\CheckLFS.cmake" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\CMakeModules\cmake_uninstall.cmake.in" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\CMakeModules\ProjectCPack.cmake" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\configure" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\configure.ac" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\config\config.guess" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\config\config.sub" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\config\depcomp" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\config\install-sh" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\config\ltmain.sh" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\config\missing" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\COPYING" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\examples\Makefile.am" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\examples\Makefile.in" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\include\config.h.cmake" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\include\config.h.in" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\include\divsufsort.h.cmake" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\include\divsufsort64.h.in" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\include\lfs.h.cmake" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\include\Makefile.am" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\include\Makefile.in" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\INSTALL" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\lib\libdivsufsort.sym" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\lib\libdivsufsort64.sym" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\lib\Makefile.am" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\lib\Makefile.in" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\m4\libtool.m4" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\m4\ltoptions.m4" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\m4\ltsugar.m4" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\m4\ltversion.m4" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\m4\lt~obsolete.m4" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\Makefile.am" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\Makefile.in" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\NEWS" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\pkgconfig\libdivsufsort.pc.cmake" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\README" />
+    <None Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\VERSION" />
+    <None Include="Flips Source Code\Flips-master\make-maintainer.sh" />
+    <None Include="Flips Source Code\Flips-master\make.sh" />
+    <None Include="Flips Source Code\Flips-master\Makefile" />
+    <None Include="Flips Source Code\Flips-master\profile\firefox-10.0esr.tar" />
+    <None Include="Flips Source Code\Flips-master\profile\firefox-17.0esr.tar" />
+    <None Include="Flips Source Code\Flips-master\README.md" />
+    <None Include="Flips Source Code\Flips-master\special.sh" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -110,6 +173,53 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Flips Source Code\Flips-master\.gitattributes" />
+    <Content Include="Flips Source Code\Flips-master\.gitignore" />
+    <Content Include="Flips Source Code\Flips-master\bps.ico" />
+    <Content Include="Flips Source Code\Flips-master\crc32.cpp" />
+    <Content Include="Flips Source Code\Flips-master\crc32.h" />
+    <Content Include="Flips Source Code\Flips-master\data\com.github.Alcaro.Flips-symbolic.svg" />
+    <Content Include="Flips Source Code\Flips-master\data\com.github.Alcaro.Flips.metainfo.xml" />
+    <Content Include="Flips Source Code\Flips-master\data\com.github.Alcaro.Flips.svg" />
+    <Content Include="Flips Source Code\Flips-master\data\flips-main-window.png" />
+    <Content Include="Flips Source Code\Flips-master\data\flips-preferences-window.png" />
+    <Content Include="Flips Source Code\Flips-master\divsufsort.c" />
+    <Content Include="Flips Source Code\Flips-master\divsufsort.h" />
+    <Content Include="Flips Source Code\Flips-master\flips-cli.cpp" />
+    <Content Include="Flips Source Code\Flips-master\flips-gtk.cpp" />
+    <Content Include="Flips Source Code\Flips-master\flips-w32.cpp" />
+    <Content Include="Flips Source Code\Flips-master\flips.cpp" />
+    <Content Include="Flips Source Code\Flips-master\flips.h" />
+    <Content Include="Flips Source Code\Flips-master\flips.ico" />
+    <Content Include="Flips Source Code\Flips-master\flips.rc" />
+    <Content Include="Flips Source Code\Flips-master\global.h" />
+    <Content Include="Flips Source Code\Flips-master\ips.ico" />
+    <Content Include="Flips Source Code\Flips-master\libbps-suf.cpp" />
+    <Content Include="Flips Source Code\Flips-master\libbps.cpp" />
+    <Content Include="Flips Source Code\Flips-master\libbps.h" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\CMakeLists.txt" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\examples\bwt.c" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\examples\CMakeLists.txt" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\examples\mksary.c" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\examples\sasearch.c" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\examples\suftest.c" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\examples\unbwt.c" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\include\CMakeLists.txt" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\include\config.h" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\include\divsufsort.h" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\include\divsufsort_private.h" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\lib\CMakeLists.txt" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\lib\divsufsort.c" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\lib\sssort.c" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\lib\trsort.c" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\lib\utils.c" />
+    <Content Include="Flips Source Code\Flips-master\libdivsufsort-2.0.1\pkgconfig\CMakeLists.txt" />
+    <Content Include="Flips Source Code\Flips-master\libips.cpp" />
+    <Content Include="Flips Source Code\Flips-master\libips.h" />
+    <Content Include="Flips Source Code\Flips-master\libups.cpp" />
+    <Content Include="Flips Source Code\Flips-master\libups.h" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
