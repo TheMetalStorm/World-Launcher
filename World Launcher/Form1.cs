@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Ionic.Zip;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Diagnostics;
-using System.Reflection;
+using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 using World_Launcher.Properties;
 
 namespace World_Launcher
@@ -43,6 +40,7 @@ namespace World_Launcher
             FullscreenCheckBox.Checked = Boolean.Parse(Settings.Default["FullscreenCheckBox"].ToString());
         }
 
+        #region Form1Methods
         private void Form1_Resize(object sender, System.EventArgs e)
         {
             Control control = (Control)sender;
@@ -64,11 +62,8 @@ namespace World_Launcher
         {
             DisplayFolder();
 
-            
         }
-
-
-
+        #endregion
 
         #region Lv_game
         private void lv_game_SelectedIndexChanged(object sender, EventArgs e)
@@ -138,7 +133,6 @@ namespace World_Launcher
             ListViewItem item = lv_game.FindItemWithText(fileName);
             if (item == null)
             {
-                Debug.WriteLine(fileName);
                 lv_game.Items.Add(fileName);
             }
 
@@ -198,39 +192,119 @@ namespace World_Launcher
         #region Patching
         private void PatchAll()
         {
-
-            //TODO: Patch files that are in .zip format
-            //Get all files in the right format 
+            //Unzip Patch Files from Zips
             List<String> allPatches = Directory.GetFiles(@patchFolderPath, "*.*", SearchOption.AllDirectories)
-      .Where(file => new string[] { ".bps", ".ips"}
-      .Contains(Path.GetExtension(file)))
-      .ToList();
+                                      .Where(file => new string[] { ".zip"}
+                                      .Contains(Path.GetExtension(file)))
+                                      .ToList();
+
+            foreach (string patchPath in allPatches)
+            {
+                if (patchPath.Contains(".zip"))
+                {
+                    string zipPath = @patchPath;
+
+                    using(ZipFile zip = ZipFile.Read(zipPath))
+{
+                         foreach (ZipEntry e in zip)
+                              {
+                                if(e.FileName.Contains(".ips") || e.FileName.Contains(".bps"))
+                                try
+                                {
+                                    e.Extract(patchFolderPath, ExtractExistingFileAction.OverwriteSilently);
+                                }
+                                catch(IOException s)
+                                {
+                                    MessageBox.Show(s.Message, "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                              }
+                        }
+                    
+                } 
+            }
+
+            //Get all Patches
+            allPatches = Directory.GetFiles(@patchFolderPath, "*.*", SearchOption.AllDirectories)
+                                    .Where(file => new string[] { ".bps", ".ips"}
+                                    .Contains(Path.GetExtension(file)))
+                                    .ToList();
+
+            //Patch each one
             foreach (string patchPath in allPatches)
             {
                 Patch(patchPath);
 
             }
+
+            //Delete file if CheckBox1 is checked
+            if (checkBox1.Checked)
+            {
+                List<String> all = Directory.GetFiles(@patchFolderPath, "*.*", SearchOption.AllDirectories).ToList();
+                foreach (string path in all)
+                {
+                    // Create a reference to a file.
+                    FileInfo fi = new FileInfo(path);
+                    //Wait until file is not in use anymore
+                    while (IsFileLocked(fi)) { }
+                    //Delete file
+                    fi.Delete();
+                }
+                   
+            }
+            //else only delete created temp files
+            else
+            {
+                List<String> all = Directory.GetFiles(@patchFolderPath, "*.temp", SearchOption.AllDirectories).ToList();
+                foreach (string path in all)
+                {
+                    // Create a reference to a file.
+                    FileInfo fi = new FileInfo(path);
+                    //Wait until file is not in use anymore
+                    while (IsFileLocked(fi)) { }
+                    //Delete file
+                    fi.Delete();
+                }
+            }
         }
         private void Patch(string patchPath)
         {
+
+            string name = "";
             //Get Name of Patch
             // get index of last \, which comes before the file name 
             int cutOff = patchPath.LastIndexOf(@"\");
 
             //check if bps or ips file, create substring of patchPath after cutOff, delete the original file ending and add .smc
-            string name;
-            if (patchPath.Contains(".bps")) name = patchPath.Substring(cutOff).Replace(@".bps", "") + ".smc";
-            else name = patchPath.Substring(cutOff).Replace(@".ips", "") + ".smc";
+            if (patchPath.Contains(".bps"))
+            {
+                name = patchPath.Substring(cutOff + 1).Replace(@".bps", "") + ".smc";
 
-          
+                callCMD(createCMDPrompt(name, patchPath));
 
-            //Decide, where it should get saved
-            string outputPath = @"""" + patchedRomsFolder + name + @"""";
+            }
+            else if (patchPath.Contains(".ips"))
+            {
+                name = patchPath.Substring(cutOff + 1).Replace(@".ips", "") + ".smc";
+                callCMD(createCMDPrompt(name, patchPath));
 
-            //compose promopt for CMD
-            string prompt = "flips --apply " + @"""" + patchPath + @"""" + " " + @"""" + smwRomPath + @"""" + " " + outputPath;
+            }
 
-            //Calls Flips CLI which patches file and saves it in the PatchedRoms Folder
+            if (name == "") return;
+            
+            DisplayFile(name);
+
+        }
+
+        string createCMDPrompt(string name, string patchPath)
+        {
+            string outputPath = @"""" + patchedRomsFolder + @"\" + name + @"""";
+            return "flips --apply " + @"""" + patchPath + @"""" + " " + @"""" + smwRomPath + @"""" + " " + outputPath;
+        }
+
+        //Source: https://stackoverflow.com/questions/10504647/deleting-files-in-use by dknaack
+        void callCMD(string prompt)
+        {
             Process cmd = new Process();
             cmd.StartInfo.FileName = "cmd.exe";
             cmd.StartInfo.RedirectStandardInput = true;
@@ -243,24 +317,7 @@ namespace World_Launcher
             cmd.StandardInput.Flush();
             cmd.StandardInput.Close();
             cmd.WaitForExit();
-
-            DisplayFile(name.Substring(1));
-
-            //Delete file if CheckBox1 is checked
-            if (checkBox1.Checked)
-            {
-
-                // Create a reference to a file.
-                FileInfo fi = new FileInfo(patchPath);
-                //Wait until file is not in use anymore
-                while (IsFileLocked(fi)) { }
-                //Delete file
-                fi.Delete();
-            }
-
         }
-
-        //Source: https://stackoverflow.com/questions/10504647/deleting-files-in-use by dknaack
         protected virtual bool IsFileLocked(FileInfo file)
         {
             FileStream stream = null;
@@ -304,8 +361,9 @@ namespace World_Launcher
 
         #endregion
 
+        #region Draw
         //Source: https://docs.microsoft.com/en-us/dotnet/desktop/winforms/advanced/how-to-draw-text-on-a-windows-form?view=netframeworkdesktop-4.8 by Microsoft, modified
-        public void DrawString(string text, float x, float y)
+        /*public void DrawString(string text, float x, float y)
         {
             System.Drawing.Graphics formGraphics = this.CreateGraphics();
             string drawString = text;
@@ -316,6 +374,8 @@ namespace World_Launcher
             drawFont.Dispose();
             drawBrush.Dispose();
             formGraphics.Dispose();
-        }
+        }*/
+        #endregion
+
     }
 }
