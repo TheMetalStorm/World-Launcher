@@ -3,7 +3,7 @@ Launcher for Super Mario World Rom Hacks with included Patcher (Floating IPS by 
 
 ## How to use
 
-1. Download World.Launcher.rar from the latest release, unpack it and start "World Launcher.exe"
+1. Download World_Launcher_V1.0.zip from the latest release, unpack it and start "World Launcher.exe"
 1. Choose Location of your **legally obtained** American Super Mario World Rom (.smc)
 1. Choose Location of the folder containing the your Patches (.bps or .ips)
 1. Choose Location of the emulator you want to use (Only tested with Snes9x)
