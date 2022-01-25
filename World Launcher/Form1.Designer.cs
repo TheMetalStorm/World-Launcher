@@ -38,7 +38,6 @@ namespace World_Launcher
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.FullscreenCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
@@ -100,23 +99,10 @@ namespace World_Launcher
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(378, 24);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(168, 17);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Delete Patches after Patching";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // FullscreenCheckBox
             // 
             this.FullscreenCheckBox.AutoSize = true;
-            this.FullscreenCheckBox.Location = new System.Drawing.Point(378, 48);
+            this.FullscreenCheckBox.Location = new System.Drawing.Point(378, 37);
             this.FullscreenCheckBox.Name = "FullscreenCheckBox";
             this.FullscreenCheckBox.Size = new System.Drawing.Size(154, 17);
             this.FullscreenCheckBox.TabIndex = 8;
@@ -130,7 +116,6 @@ namespace World_Launcher
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 460);
             this.Controls.Add(this.FullscreenCheckBox);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
@@ -157,7 +142,6 @@ namespace World_Launcher
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox FullscreenCheckBox;
     }
 }

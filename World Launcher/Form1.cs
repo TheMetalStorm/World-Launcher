@@ -36,7 +36,7 @@ namespace World_Launcher
             emulatorPath = Settings.Default["emulatorPath"].ToString();
             patchFolderPath = Settings.Default["patchFolderPath"].ToString();
 
-            checkBox1.Checked = Boolean.Parse(Settings.Default["DeletePatchesCheckbox"].ToString());
+            //checkBox1.Checked = Boolean.Parse(Settings.Default["DeletePatchesCheckbox"].ToString());
             FullscreenCheckBox.Checked = Boolean.Parse(Settings.Default["FullscreenCheckBox"].ToString());
         }
 
@@ -238,7 +238,7 @@ namespace World_Launcher
             }
 
             //Delete file if CheckBox1 is checked
-            if (checkBox1.Checked)
+            /*if (checkBox1.Checked)
             {
                 List<String> all = Directory.GetFiles(@patchFolderPath, "*.*", SearchOption.AllDirectories).ToList();
                 foreach (string path in all)
@@ -254,7 +254,7 @@ namespace World_Launcher
             }
             //else only delete created temp files
             else
-            {
+            {*/
                 List<String> all = Directory.GetFiles(@patchFolderPath, "*.temp", SearchOption.AllDirectories).ToList();
                 foreach (string path in all)
                 {
@@ -265,7 +265,7 @@ namespace World_Launcher
                     //Delete file
                     fi.Delete();
                 }
-            }
+            //}
         }
         private void Patch(string patchPath)
         {
@@ -346,11 +346,11 @@ namespace World_Launcher
         #endregion
 
         #region CheckBox
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+       /* private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             Settings.Default["DeletePatchesCheckbox"] = checkBox1.Checked.ToString();
             Settings.Default.Save();
-        }
+        }*/
 
         private void FullscreenCheckBox_CheckedChanged(object sender, EventArgs e)
         {
